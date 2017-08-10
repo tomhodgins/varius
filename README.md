@@ -2,7 +2,7 @@
 
 **JS Properties for Elements as CSS Variables**
 
-##About
+## About
 
 The idea of VARIUS is to use JavaScript to expose properties of elements (like `offsetWidth`, `innerHTML.length`, `children.length`, and even things like `window.innerWidth` to CSS through CSS variables. Since CSS variables are scoped at the level of each element we are able to write simple CSS that is 'scoped' to the state of each individual element they apply to as it currently appears in the browser.
 
