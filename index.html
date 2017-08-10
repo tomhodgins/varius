@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>VARIUS - JS properties for Elements as CSS variables</title>
+<script src=varius.js></script>
+<style>
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-kerning: auto;
+  }
+  html {
+    font-size: 12pt;
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    padding: 2em;
+  }
+  hr {
+    margin: 2em 0;
+  }
+</style>
+
+<h1>VARIUS</h1>
+<h2>JS Properties for Elements as CSS Variables</h2>
+
+<p>The idea of <a href=https://github.com/tomhodgins/varius>Varius</a> is to use JavaScript to expose properties of elements (like <code>offsetWidth</code>, <code>innerHTML.length</code>, <code>children.length</code>, and even things like <code>window.innerWidth</code> to CSS through CSS variables. Since CSS variables are scoped at the level of each element we are able to write simple CSS that is 'scoped' to the state of each individual element they apply to as it currently appears in the browser.</p>
+
+<p>The full list of available variables you can use in your CSS is:</p>
+
+<h3>Global Variables</h3>
+<ul>
+  <li><code>innerWidth</code>
+  <li><code>innerHeight</code>
+</ul>
+
+<h3>Scoped Variables</h3>
+<ul>
+  <li><code>offsetWidth</code>
+  <li><code>offsetHeight</code>
+  <li><code>offsetLeft</code>
+  <li><code>offsetTop</code>
+  <li><code>scrollWidth</code>
+  <li><code>scrollHeight</code>
+  <li><code>scrollLeft</code>
+  <li><code>scrollTop</code>
+  <li><code>children</code>
+  <li><code>characters</code>
+  <li><code>value</code>
+</ul>
+
+<p>View VARIUS on Github: <a href=https://github.com/tomhodgins/varius>github.com/tomhodgins/varius</a></p>
+
+<hr>
+
+<h3 id=value>Using <code>value.length</code> as a variable</h3>
+<input placeholder="Type to change background">
+<textarea placeholder="Type to change background"></textarea>
+<style>
+  input,
+  textarea {
+    background: hsl(var(--value), 75%, 75%);
+  }
+</style>
+
+<hr>
+
+<h3 id=scalable>Using <code>offsetWidth</code> as a variable</h3>
+<div style=max-width:25%>25% wide</div>
+<div style=max-width:50%>50% wide</div>
+<div>Full-width</div>
+<style>
+  div {
+    margin: 1em 0;
+    background: lime;
+    height: calc(var(--offsetWidth) / (16/9) * 1px);
+  }
+</style>
+
+<hr>
+
+<h3>Using <code>children.length</code> as a variable</h3>
+<ol><li></ol>
+<ol><li><li></ol>
+<ol><li><li><li></ol>
+<ol><li><li><li><li></ol>
+<ol><li><li><li><li><li></ol>
+<ol><li><li><li><li></ol>
+<ol><li><li><li></ol>
+<ol><li><li></ol>
+<ol><li></ol>
+<style>
+  ol {
+    padding: 0;
+    display: block;
+    width: 100%;
+    list-style: none;
+    border: 1px solid;
+    overflow: hidden;
+    /* pass the parent's value down to children */
+    --ul-children: var(--children);
+  }
+  ol li {
+    display: block;
+    border: 1px solid;
+    height: 100px;
+    float:left;
+    width: calc(100% / var(--ul-children));
+  }
+</style>
