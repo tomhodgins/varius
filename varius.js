@@ -37,7 +37,7 @@ function varius() {
   document.documentElement.style.setProperty('--innerWidth', innerWidth)
   document.documentElement.style.setProperty('--innerHeight', innerHeight)
 
-  document.querySelectorAll('*').forEach(tag => {
+  document.querySelectorAll('body *').forEach(tag => {
 
     tag.style.setProperty('--offsetWidth', tag.offsetWidth)
     tag.style.setProperty('--offsetHeight', tag.offsetHeight)
