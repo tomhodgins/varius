@@ -5,7 +5,7 @@
 
   Varius is a CSS reprocessor that exposes the properties of elements from JavaScript to CSS via setting CSS variables. The full list of available variables you can use in your CSS is:
 
-  ##Global Variables
+  ## Global Variables
 
   - innerWidth
   - innerHeight
